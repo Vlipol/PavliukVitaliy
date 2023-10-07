@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 5</title>
+
+    <script>
+        function calc(x, y) {
+            // Обчислення факторіалу
+            function factorial(n) {
+                if (n === 0 || n === 1) return 1;
+                return n * factorial(n - 1);
+            }
+        
+            // Основний вираз
+            let result = Math.pow(x, y) - Math.sqrt(x);
+            result /= factorial(12);
+        
+            return result;
+        }
+
+        function fun() {
+            let x = parseFloat(document.getElementById("t_x").value);
+            let y = parseFloat(document.getElementById("t_y").value);
+            let result = calc(x, y);
+            document.getElementById("t_c").value = result;
+        }
+    </script>     
+</head>
+<body>
+    <form id = "main_form">
+        x<input type="text" id = "t_x" value=""><br>
+        y<input type="text" id = "t_y" value=""><br>
+        Результат<input type="text" id = "t_c" value=""><br>
+        <input type = "button" onClick = "fun();" value = "Розрахувати">
+        </form>
+        
+</body>
+</html>
