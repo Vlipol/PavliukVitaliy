@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 6</title>
+
+    <script>
+        let continent = ["Asia", "Europe", "Africa", "North America", "South America", "Oceania"];
+        let density = [150, 73, 45, 22, 24, 5]; 
+        let area = [44380000, 10180000, 30370000, 24709000, 17840000, 9000000]; 
+
+        function fun1(){
+            let userInput = document.getElementsByName("entry")[0].value; // Отримати введену користувачем назву континенту
+            let index = continent.indexOf(userInput); // Знайти індекс введеного континенту
+
+        if (index !== -1) { // Якщо континент знайдено
+        currentContinentIndex = index; // Запам'ятати індекс поточного континенту
+        let populationDensity = density[index]; // Отримати густину населення
+        let continentArea = area[index]; // Отримати площу
+            document.getElementsByName("output")[0].value = `Густина населення: ${populationDensity} на кв. км\n Площа: ${continentArea} кв. км`;
+        } else {
+            document.getElementsByName("output")[0].value = "Континент не знайдено.";
+            }
+        }
+        function fun2(){
+                if (currentContinentIndex !== undefined) { // Перевірка, чи був обраний континент
+                    let populationDensity = density[currentContinentIndex]; // Отримати густину населення
+                    let continentArea = area[currentContinentIndex]; // Отримати площу континенту
+                    let population = populationDensity * continentArea; // Обчислити населення
+            
+                    document.getElementsByName("output2")[0].value += `\nНаселення: ${population}`;
+                } else {
+                    document.getElementsByName("output2")[0].value = "Спочатку виберіть континент.";
+                }
+        }
+    </script>
+</head>
+<body>
+<FORM NAME="entryForm">
+Введіть назву континенту(en):
+<INPUT TYPE="text" NAME="entry">
+<INPUT TYPE="button" VALUE="Густина і площа" onClick=" fun1()">
+<BR>
+<INPUT TYPE="text" SIZE="70" NAME="output">
+    <br>
+    <INPUT TYPE="button" VALUE="Населення" onClick="fun2()">
+        <br>
+        <INPUT TYPE="text" SIZE="70" NAME="output2">
+</FORM> 
+</body>
+</html>

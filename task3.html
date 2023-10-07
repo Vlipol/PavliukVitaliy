@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3</title>
+    <script>
+        function fun(a)
+        {
+        main_form.t_res = a;
+        }
+        function fun1(a)
+        {
+        main_form.t_res2 = a;
+        document.getElementById('input1').blur(); // Викликаємо метод blur() для першого текстового поля
+        }
+        </script>
+        
+</head>
+<body onLoad = "fun('Відбулось завантаження сторінки');">
+    <form id = "main_form">
+        <input type = "text" size = "100" id = "t_res2";"><br>
+        <input type="button" value="Викликати blur" onclick="fun1('Текстовий елемент форми був виділений');">
+    </form>
+
+
+</body>
+</html>
