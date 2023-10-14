@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Розрахунок матриці</title>
+    <script>
+        function buildMatrix(rows, cols) {
+            let matrix = [];
+            for (let i = 1; i <= rows; i++) {
+                let row = [];
+                for (let j = 1; j <= cols; j++) {
+                    row.push(3*j - 2*i);
+                }
+                matrix.push(row);
+            }
+            return matrix;
+        }
+
+        function sumDiagonal(matrix) {
+            let total = 0;
+            for (let i = 0; i < matrix.length; i++) {
+                total += matrix[i][i];
+            }
+            return total;
+        }
+
+        function calculate() {
+            let rows = parseInt(document.getElementById('rows').value);
+            let cols = parseInt(document.getElementById('cols').value);
+
+            let matrix = buildMatrix(rows, cols);
+            let result = sumDiagonal(matrix);
+
+            alert("Матриця: \n" + matrix.map(row => row.join("\t")).join("\n") + "\nСума головної діагоналі: " + result);
+        }
+    </script>
+</head>
+<body>
+    <label for="rows">Кількість рядків:</label>
+    <input type="text" id="rows" value="5"><br>
+
+    <label for="cols">Кількість стовпців:</label>
+    <input type="text" id="cols" value="5"><br>
+
+    <button onclick="calculate()">Розрахувати</button>
+</body>
+</html>

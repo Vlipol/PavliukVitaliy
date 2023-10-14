@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Console.log Методи</title>
+</head>
+<body>
+
+<script>
+    // console.info() - для надання інформаційних повідомлень
+console.info('Це інформаційне повідомлення.');
+
+// console.warn() - для виведення предупреждення
+console.warn('Це предупреждення.');
+
+// console.error() - для виведення повідомлення про помилку
+console.error('Це повідомлення про помилку.');
+
+// console.dir() - виводить властивості об'єкта у вигляді дерева
+const myObj = { a: 1, b: 2, c: { d: 3, e: 4 } };
+console.dir(myObj);
+
+// console.dirxml() - для виведення HTML або XML вмісту
+const xmlString = '<note><to>Tove</to><from>Jani</from><heading>Reminder</heading><body>Don\'t forget me this weekend!</body></note>';
+console.dirxml(xmlString);
+
+// console.time() та console.timeEnd() - для вимірювання часу виконання операцій
+console.time('Довга операція');
+for (let i = 0; i < 1000000; i++) {
+    // Якісь складні обчислення
+}
+console.timeEnd('Довга операція');
+
+// console.profile() та console.profileEnd() - для профілювання коду (тільки в Chrome DevTools)
+console.profile('Мій профіль');
+// Операції, які потрібно профілювати
+console.profileEnd('Мій профіль');
+
+// console.assert() - для перевірки умови, якщо умова false, то виводить повідомлення
+let x = 10;
+console.assert(x === 5, 'Значення x не дорівнює 5');
+
+</script>
+
+</body>
+</html>
