@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 5</title>
+    <style>
+        input[type="text"] {
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Перевірка таблиці множення</h1>
+    <p>Загальний рахунок: <span id="score">0% (0 правильних відповідей з 10)</span></p>
+    <hr>
+    <div id="taskContainer">
+        <p id="task"></p>
+        <input type="text" id="answer">
+        <button onclick="checkAnswer()">Перевірити</button>
+    </div>
+    <button onclick="nextTask()">Наступне завдання</button>
+    <p id="result"></p>
+
+    <script>
+let score = 0;
+let totalQuestions = 0;
+let currentTask = generateTask();
+
+function generateTask() {
+    let multiplier1 = Math.floor(Math.random() * 10);
+    let multiplier2 = Math.floor(Math.random() * 10);
+    return {
+        question: `${multiplier1} × ${multiplier2} = `,
+        answer: multiplier1 * multiplier2
+    };
+}
+
+function updateScore() {
+    document.getElementById('score').textContent = `${Math.round((score / totalQuestions) * 100)}% (${score} правильних відповідей з ${totalQuestions})`;
+}
+
+function nextTask() {
+    currentTask = generateTask();
+    document.getElementById('task').textContent = currentTask.question;
+    document.getElementById('answer').value = '';
+    document.getElementById('result').textContent = ''; 
+}
+
+function checkAnswer() {
+    let userAnswer = parseInt(document.getElementById('answer').value, 10);
+    if (!isNaN(userAnswer)) {
+        totalQuestions++;
+        let resultText = (userAnswer === currentTask.answer) ? 'Правильно!' : `Помилка, правильна відповідь: ${currentTask.answer}`;
+        document.getElementById('result').textContent = resultText;
+
+        if (userAnswer === currentTask.answer) {
+            score++;
+        }
+
+        updateScore();
+    } else {
+        document.getElementById('result').textContent = 'Будь ласка, введіть число.';
+    }
+    nextTask();
+}
+
+nextTask();
+
+        
+    </script>
+</body>
+</html>

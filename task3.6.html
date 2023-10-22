@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 6</title>
+    <style>
+        .tree-node {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        .collapse-icon {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <ul class="tree" id="tree">
+        <li class="tree-node" id="fruits">
+            <span class="collapse-icon" onclick="toggleNode('fruits')">></span> fruits
+            <ul>
+                <li>apple</li>
+                <li>pineapple</li>
+                <li>apricot</li>
+                <li>pear</li>
+                <li>lemon</li>
+            </ul>
+        </li>
+        <li class="tree-node" id="vegetables">
+            <span class="collapse-icon" onclick="toggleNode('vegetables')">></span> vegetables
+            <ul>
+                <li>potatoes</li>
+                <li>beetroot</li>
+                <li>carrots</li>
+                <li>pear</li>
+            </ul>
+        </li>
+    </ul>
+
+    <script>
+        function toggleNode(nodeId) {
+            let node = document.getElementById(nodeId);
+            let childUl = node.querySelector('ul');
+            let collapseIcon = node.querySelector('.collapse-icon');
+
+            if (childUl.style.display === 'none' || !childUl.style.display) {
+                childUl.style.display = 'block';
+                collapseIcon.textContent = '^';
+            } else {
+                childUl.style.display = 'none';
+                collapseIcon.textContent = '>';
+            }
+        }
+    </script>
+</body>
+</html>

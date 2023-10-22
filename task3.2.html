@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+        <script>
+            let alphabet = ['а','б','в','г','д','е','є','и','і','ї','й','к','л','м','н','о','п','р','с','т','у','ф','х','ц','ч','ш','щ','ь','ю','я'];
+    
+            function addToInput(letter) {
+                document.getElementById('inputField').value += letter;
+            }
+    
+            function clearInput() {
+                document.getElementById('inputField').value = '';
+            }
+        </script>
+</head>
+<body>
+    <h1>Екранна клавіатура</h1>
+
+    <div id="keyboard">
+        <div>
+            <button onclick="addToInput('а')">а</button>
+            <button onclick="addToInput('б')">б</button>
+            <button onclick="addToInput('в')">в</button>
+            <button onclick="addToInput('г')">г</button>
+            <button onclick="addToInput('д')">д</button>
+            <button onclick="addToInput('е')">е</button>
+            <button onclick="addToInput('є')">є</button>
+            <button onclick="addToInput('и')">и</button>
+            <button onclick="addToInput('і')">і</button>
+            <button onclick="addToInput('ї')">ї</button>
+            <button onclick="addToInput('й')">й</button>
+            <button onclick="addToInput('к')">к</button>
+        </div>
+        <div>
+            <button onclick="addToInput('л')">л</button>
+            <button onclick="addToInput('м')">м</button>
+            <button onclick="addToInput('н')">н</button>
+            <button onclick="addToInput('о')">о</button>
+            <button onclick="addToInput('п')">п</button>
+            <button onclick="addToInput('р')">р</button>
+            <button onclick="addToInput('с')">с</button>
+            <button onclick="addToInput('т')">т</button>
+            <button onclick="addToInput('у')">у</button>
+            <button onclick="addToInput('ф')">ф</button>
+            <button onclick="addToInput('х')">х</button>
+        </div>
+        <div>
+            <button onclick="addToInput('ц')">ц</button>
+            <button onclick="addToInput('ч')">ч</button>
+            <button onclick="addToInput('ш')">ш</button>
+            <button onclick="addToInput('щ')">щ</button>
+            <button onclick="addToInput('ь')">ь</button>
+            <button onclick="addToInput('ю')">ю</button>
+            <button onclick="addToInput('я')">я</button>
+        </div>
+        <div>
+            <button onclick="clearInput()">Очистити поле</button>
+        </div>
+    </div>
+
+    <br>
+
+    <textarea id="inputField" cols="50" rows="5"></textarea>
+</body>
+</html>

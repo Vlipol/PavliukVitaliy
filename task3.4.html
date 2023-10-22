@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 4</title>
+    <script>
+        let images = ['photo1.jpg', 'photo2.jpg', 'photo3,jpg']; 
+
+        let currentIndex = 0; 
+        function showImage(index) {
+            let imgElement = document.getElementById('imageElement');
+            imgElement.src = images[index];
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        }
+    </script>
+</head>
+<body>
+    <h1>Перегляд зображень</h1>
+
+    <button onclick="prevImage()">Назад</button>
+    <img id="imageElement" src="" alt="Image" style="width: 50%; height: auto;">
+    <button onclick="nextImage()">Вперед</button>
+
+    <script>
+        showImage(currentIndex);
+    </script>
+</body>
+</html>

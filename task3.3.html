@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3</title>
+    <script>
+        let ukrainianAlphabet = ['а','б','в','г','д','е','є','и','і','ї','й','к','л','м','н','о','п','р','с','т','у','ф','х','ц','ч','ш','щ','ь','ю','я'];
+        let englishAlphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+
+        let currentLayout = 'ukrainian'; // Починаємо з української розкладки
+
+        function addToInput(letter) {
+            document.getElementById('inputField').value += letter;
+        }
+
+        function toggleLayout() {
+            if (currentLayout === 'ukrainian') {
+                currentLayout = 'english';
+                document.getElementById('layoutButton').innerHTML = 'Українська';
+                document.getElementById('ukrainianKeys').style.display = 'none';
+                document.getElementById('englishKeys').style.display = 'block';
+            } else {
+                currentLayout = 'ukrainian';
+                document.getElementById('layoutButton').innerHTML = 'English';
+                document.getElementById('englishKeys').style.display = 'none';
+                document.getElementById('ukrainianKeys').style.display = 'block';
+            }
+        }
+
+        function handleKeyPress(event) {
+            if (event.altKey && event.shiftKey) {
+                toggleLayout();
+            }
+        }
+
+        function clearInput() {
+            document.getElementById('inputField').value = '';
+        }
+
+        document.addEventListener('keydown', handleKeyPress);
+    </script>
+</head>
+<body>
+    <h1>Екранна клавіатура</h1>
+
+    <div id="keyboard">
+        <div id="englishKeys" style="display:none;">
+            <button onclick="addToInput('a')">a</button>
+            <button onclick="addToInput('b')">b</button>
+            <button onclick="addToInput('c')">c</button>
+            <button onclick="addToInput('d')">d</button>
+            <button onclick="addToInput('e')">e</button>
+            <button onclick="addToInput('f')">f</button>
+            <button onclick="addToInput('g')">g</button>
+            <button onclick="addToInput('h')">h</button>
+            <button onclick="addToInput('i')">i</button>
+            <button onclick="addToInput('j')">j</button>
+            <button onclick="addToInput('k')">k</button>
+            <button onclick="addToInput('l')">l</button>
+            <button onclick="addToInput('m')">m</button>
+            <button onclick="addToInput('n')">n</button>
+            <button onclick="addToInput('o')">o</button>
+            <button onclick="addToInput('p')">p</button>
+            <button onclick="addToInput('q')">q</button>
+            <button onclick="addToInput('r')">r</button>
+            <button onclick="addToInput('s')">s</button>
+            <button onclick="addToInput('t')">t</button>
+            <button onclick="addToInput('u')">u</button>
+            <button onclick="addToInput('v')">v</button>
+            <button onclick="addToInput('w')">w</button>
+            <button onclick="addToInput('x')">x</button>
+            <button onclick="addToInput('y')">y</button>
+            <button onclick="addToInput('z')">z</button>
+        </div>
+        <div id="ukrainianKeys">
+            <button onclick="addToInput('а')">а</button>
+            <button onclick="addToInput('б')">б</button>
+            <button onclick="addToInput('в')">в</button>
+            <button onclick="addToInput('г')">г</button>
+            <button onclick="addToInput('д')">д</button>
+            <button onclick="addToInput('е')">е</button>
+            <button onclick="addToInput('є')">є</button>
+            <button onclick="addToInput('ж')">ж</button>
+            <button onclick="addToInput('з')">з</button>
+            <button onclick="addToInput('и')">и</button>
+            <button onclick="addToInput('і')">і</button>
+            <button onclick="addToInput('ї')">ї</button>
+            <button onclick="addToInput('й')">й</button>
+            <button onclick="addToInput('к')">к</button>
+            <button onclick="addToInput('л')">л</button>
+            <button onclick="addToInput('м')">м</button>
+            <button onclick="addToInput('н')">н</button>
+            <button onclick="addToInput('о')">о</button>
+            <button onclick="addToInput('п')">п</button>
+            <button onclick="addToInput('р')">р</button>
+            <button onclick="addToInput('с')">с</button>
+            <button onclick="addToInput('т')">т</button>
+            <button onclick="addToInput('у')">у</button>
+            <button onclick="addToInput('ф')">ф</button>
+            <button onclick="addToInput('х')">х</button>
+            <button onclick="addToInput('ц')">ц</button>
+            <button onclick="addToInput('ч')">ч</button>
+            <button onclick="addToInput('ш')">ш</button>
+            <button onclick="addToInput('щ')">щ</button>
+            <button onclick="addToInput('ь')">ь</button>
+            <button onclick="addToInput('ю')">ю</button>
+            <button onclick="addToInput('я')">я</button>
+        </div>
+
+        <div>
+            <button id="layoutButton" onclick="toggleLayout()">Українська</button>
+            <button onclick="clearInput()">Очистити поле</button>
+        </div>
+    </div>
+
+    <br>
+
+    <!-- Текстове поле для введення -->
+    <textarea id="inputField" cols="50" rows="5"></textarea>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+    <script>
+        function calculate() {
+            // Отримуємо значення з полів введення
+            var length = parseFloat(document.getElementById('length').value);
+            var width = parseFloat(document.getElementById('width').value);
+
+            // Обчислюємо периметр
+            var perimeter = 2 * (length + width);
+
+            // Обчислюємо площу
+            var area = length * width;
+
+            // Обчислюємо діагональ
+            var diagonal = Math.sqrt(Math.pow(length, 2) + Math.pow(width, 2));
+
+            // Вставляємо результати у відповідні елементи
+            document.getElementById('perimeterResult').innerHTML = "Периметр: " + perimeter;
+            document.getElementById('areaResult').innerHTML = "Площа: " + area;
+            document.getElementById('diagonalResult').innerHTML = "Діагональ: " + diagonal;
+        }
+    </script>
+</head>
+<body>
+    <h1>Калькулятор прямокутника</h1>
+    
+    <label for="length">Довжина:</label>
+    <input type="text" id="length" oninput="calculate()"><br><br>
+
+    <label for="width">Ширина:</label>
+    <input type="text" id="width" oninput="calculate()"><br><br>
+
+    <div id="perimeterResult">Периметр: </div>
+    <div id="areaResult">Площа: </div>
+    <div id="diagonalResult">Діагональ: </div>
+</body>
+</html>
