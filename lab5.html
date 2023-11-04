@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertical Tabs Menu</title>
+    <link rel="stylesheet" href="lab5.css">
+</head>
+<body>
+    <div class="tabs">
+        <div class="tab">
+            <button class="tablinks active" onclick="toggleTab(event, 'tab1')">Tab 1</button>
+            <div id="tab1" class="tabcontent">
+                <div class="nested-tabs">
+                    <button class="tablinks" onclick="toggleTab(event, 'subtab1')">Subtab 1</button>
+                    <div id="subtab1" class="tabcontent">
+                        <h3>Зміст підвкладки 1</h3>
+                        <p>Це текст для підвкладки 1.</p>
+                    </div>
+                    <button class="tablinks" onclick="toggleTab(event, 'subtab2')">Subtab 2</button>
+                    <div id="subtab2" class="tabcontent">
+                        <h3>Зміст підвкладки 2</h3>
+                        <p>Це текст для підвкладки 2.</p>
+                    </div>
+                    <button class="tablinks" onclick="toggleTab(event, 'subtab3')">Subtab 3</button>
+                    <div id="subtab3" class="tabcontent">
+                        <h3>Зміст підвкладки 3</h3>
+                        <p>Це текст для підвкладки 3.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab">
+            <button class="tablinks active" onclick="toggleTab(event, 'tab2')">Tab 2</button>
+            <div id="tab2" class="tabcontent">
+                <div class="nested-tabs">
+                    <button class="tablinks" onclick="toggleTab(event, 'subtab4')">Subtab 4</button>
+                    <div id="subtab4" class="tabcontent">
+                        <h3>Зміст підвкладки 4</h3>
+                        <p>Це текст для підвкладки 4.</p>
+                    </div>
+                    <button class="tablinks" onclick="toggleTab(event, 'subtab5')">Subtab 5</button>
+                    <div id="subtab5" class="tabcontent">
+                        <h3>Зміст підвкладки 5</h3>
+                        <p>Це текст для підвкладки 5.</p>
+                    </div>
+                    <button class="tablinks" onclick="toggleTab(event, 'subtab6')">Subtab 6</button>
+                    <div id="subtab6" class="tabcontent">
+                        <h3>Зміст підвкладки 6</h3>
+                        <p>Це текст для підвкладки 6.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="menu">
+        <div class="menu-header">Main Menu
+        <div class="menu-item">
+            Menu Item 1
+            <div class="submenu">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+            </div>
+        </div>
+        <div class="menu-item">
+            Menu Item 2
+            <div class="submenu">
+                <a href="#">Link 3</a>
+                <a href="#">Link 4</a>
+            </div>
+    </div>
+</div>
+</div>
+
+    <script src="lab5.js"></script>
+</body>
+</html>

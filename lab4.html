@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+<body>
+    <form method="post" name="test">
+    <p>Скільки буде 2*2?
+        <br><input type="radio" name="question1" id="variant11" value="true">4
+        <br><input type="radio" name="question1" id="variant12" value="">2
+        <br><input type="radio" name="question1" id="variant13" value="">6
+        <br><input type="radio" name="question1" id="variant13" value="">8
+    </p>
+    <p>Скільки буде 5+4?
+        <br><input type="radio" name="question2" id="variant11" value="">8
+        <br><input type="radio" name="question2" id="variant12" value="">10
+        <br><input type="radio" name="question2" id="variant13" value="">7
+        <br><input type="radio" name="question2" id="variant13" value="true">9
+    </p>
+
+    <p>Вибери іменник
+        <br><input type="checkbox" name="question3" id="variant21" value="добрий">добрий
+        <br><input type="checkbox" name="question3" id="variant22" value="тепло">тепло 
+        <br><input type="checkbox" name="question3" id="variant23" value="стіл">стіл
+        <br><input type="checkbox" name="question3" id="variant24" value="телефон">телефон
+    </p>
+    <p>Вкажіть види складних речень:
+        <br><input type="checkbox" name="question4" id="variant31" value="складносурядні">складносурядні 
+        <br><input type="checkbox" name="question4" id="variant32" value="складносурядні">складнопідрядні  
+        <br><input type="checkbox" name="question4" id="variant33" value="безсполучникові">безсполучникові
+        <br><input type="checkbox" name="question4" id="variant34" value="розділові">розділові
+    </p>
+
+    <p>Як перекладається слово flag
+        <select name="question5">
+        <option>прапор
+        <option>жаба
+        <option>стіл
+        <option>вода
+        </select>
+        </p>
+    <p>Як перекласти слово foot
+        <select name="question6">
+        <option>стопа
+        <option>стоп
+        <option>тепло
+        <option>футбол
+        </select>
+    </p>
+
+    <p>Коли проголошено Незалежність України (рік)<input type="text" name="text"></p> <br>
+
+
+    <input name="check" onclick="perevirka(this.form)" type="button" value="Розрахувати бал">
+    <br><textarea name="display" rows="5" cols="50"> </textarea>
+
+    </form>
+    <script src="lab4.js"></script>
+</body>
+</html>

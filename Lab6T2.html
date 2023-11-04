@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation Form</title>
+    <style>
+        .error {
+            border: 2px solid red;
+            color: red;
+        }
+        .success {
+            border: 2px solid green;
+            color: green;
+        }
+        .icon {
+            margin-left: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <form action="#" method="post" onsubmit="return validateForm()">
+        <label for="email">Адреса електронної пошти (e-mail):</label>
+        <input type="email" id="email" name="email" required><span id="emailError"></span><img id="emailIcon" class="icon" src="success.png" alt=""><br><br>
+        
+        <label for="name">Ім'я та прізвище:</label>
+        <input type="text" id="name" name="name" required><span id="nameError"></span><img id="nameIcon" class="icon" src="success.png" alt=""><br><br>
+        
+        <label for="login">Логін:</label>
+        <input type="text" id="login" name="login" required><span id="loginError"></span><img id="loginIcon" class="icon" src="success.png" alt=""><br><br>
+        
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" name="password" required><span id="passwordError"></span><img id="passwordIcon" class="icon" src="success.png" alt=""><br><br>
+        
+        <label for="postcode">Поштовий індекс:</label>
+        <input type="text" id="postcode" name="postcode" required><span id="postcodeError"></span><img id="postcodeIcon" class="icon" src="success.png" alt=""><br><br>
+        
+        <input type="submit" value="Відправити">
+    </form>
+
+    <script src="lab6.js"></script>
+</body>
+</html>

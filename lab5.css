@@ -1,0 +1,77 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.tabs {
+    display: flex;
+}
+
+.tab {
+    flex: 1;
+    margin: 0 5px;
+}
+
+.tablinks {
+    width: 100%;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+}
+
+.tablinks.active {
+    background-color: #ddd;
+}
+
+.tabcontent {
+    .tabcontent {
+        display: none;
+        padding: 10px;
+        border-top: 1px solid #ccc;
+        transition: display 0.5s;
+    }
+    
+}
+
+.tabcontent.active {
+    display: block;
+}
+
+
+.menu {
+    width: 100px; /* Ширина головного меню */
+}
+
+.menu-item {
+    position: relative;
+    cursor: pointer;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%; /* Розташування підменю відносно головного меню */
+    min-width: 100px; /* Ширина підменю */
+    background-color: #f4f4f4;
+    border-left: 1px solid #ccc;
+}
+
+.menu-item:hover .submenu {
+    display: block;
+}
+
+.submenu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.submenu a:hover {
+    background-color: #ddd;
+}
