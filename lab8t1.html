@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1</title>
+</head>
+<body>
+
+<!-- Форма для введення значень секунд, хвилин і годин -->
+<form id="timeForm">
+    <label for="seconds">Секунди:</label>
+    <input type="number" id="seconds" placeholder="Секунди">
+
+    <label for="minutes">Хвилини:</label>
+    <input type="number" id="minutes" placeholder="Хвилини">
+
+    <label for="hours">Години:</label>
+    <input type="number" id="hours" placeholder="Години">
+
+    <button type="submit" id="secondsButton">Додати секунди</button>
+    <button type="submit" id="minutesButton">Додати хвилини</button>
+    <button type="submit" id="hoursButton">Додати години</button>
+</form>
+
+<!-- Виведення часу на екран -->
+<div id="currentTime"></div>
+
+<script>
+    // Об'єкт, що описує час
+    const timeObject = {
+        hours: new Date().getHours(),
+        minutes: new Date().getMinutes(),
+        seconds: new Date().getSeconds(),
+
+        // Функція виведення часу на екран
+        displayTime: function() {
+            document.getElementById('currentTime').innerText = this.getCurrentTime();
+        },
+
+        // Функція зміни часу на передану кількість секунд
+        addSeconds: function() {
+            const secondsInput = parseInt(document.getElementById('seconds').value, 10) || 0;
+            if (secondsInput > 0) {
+                this.seconds = (this.seconds || 0) + secondsInput;
+                this.updateTime();
+            }
+        },
+
+        // Функція зміни часу на передану кількість хвилин
+        addMinutes: function() {
+            const minutesInput = parseInt(document.getElementById('minutes').value, 10) || 0;
+            if (minutesInput > 0) {
+                this.minutes = (this.minutes || 0) + minutesInput;
+                this.updateTime();
+            }
+        },
+
+        // Функція зміни часу на передану кількість годин
+        addHours: function() {
+            const hoursInput = parseInt(document.getElementById('hours').value, 10) || 0;
+            if (hoursInput > 0) {
+                this.hours = (this.hours || 0) + hoursInput;
+                this.updateTime();
+            }
+        },
+
+        // Внутрішня функція для коректної оновлення часу після зміни
+        updateTime: function() {
+            if (this.seconds >= 60) {
+                this.minutes += Math.floor(this.seconds / 60);
+                this.seconds %= 60;
+            }
+            if (this.minutes >= 60) {
+                this.hours += Math.floor(this.minutes / 60);
+                this.minutes %= 60;
+            }
+            if (this.hours >= 24) {
+                this.hours %= 24;
+            }
+
+            // Виведення оновленого часу
+            this.displayTime();
+        },
+
+        // Функція для отримання поточного часу
+        getCurrentTime: function() {
+            return `${this.hours}:${this.minutes}:${this.seconds}`;
+        }
+    };
+
+    // Event listeners for the form
+    document.getElementById('timeForm').addEventListener('submit', function(event) {
+        // Prevent the default form submission
+        event.preventDefault();
+
+        // Check which button was clicked and call the corresponding function
+        if (event.submitter.id === 'secondsButton') {
+            timeObject.addSeconds();
+        } else if (event.submitter.id === 'minutesButton') {
+            timeObject.addMinutes();
+        } else if (event.submitter.id === 'hoursButton') {
+            timeObject.addHours();
+        }
+    });
+
+    // Display current time on page load
+    timeObject.displayTime();
+</script>
+
+</body>
+</html>

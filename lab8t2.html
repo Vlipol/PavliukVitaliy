@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+</head>
+<body>
+
+<!-- Завдання 2.1 -->
+<button onclick="displayCurrentDate()">Завдання 2.1. Виведення поточної дати, дня тижня і часу</button><br>
+
+<!-- Завдання 2.2 -->
+<button onclick="displayDayInfo()">Завдання 2.2. Виведення дня і номера тижня</button><br>
+
+<!-- Завдання 2.3 -->
+<label for="daysInput">Введіть кількість днів:</label>
+<input type="number" id="daysInput" placeholder="Кількість днів">
+<button onclick="findDate()">Завдання 2.3. Знайти дату</button><br>
+
+<!-- Завдання 2.4 -->
+<label for="monthInput">Введіть номер місяця:</label>
+<input type="number" id="monthInput" placeholder="Номер місяця">
+<label for="yearInput">Введіть рік:</label>
+<input type="number" id="yearInput" placeholder="Рік">
+<button onclick="findLastDayOfMonth()">Завдання 2.4. Останній день місяця</button><br>
+
+<!-- Завдання 2.5 -->
+<button onclick="getSecondsInfo()">Завдання 2.5. Інформація про секунди</button><br>
+
+<!-- Завдання 2.6 -->
+<label for="dateStringInput">Введіть дату у форматі "дд.мм.р год:хв":</label>
+<input type="text" id="dateStringInput" placeholder="дд.мм.р год:хв">
+<button onclick="formatDate()">Завдання 2.6. Форматування дати</button><br>
+
+<!-- Результати виводяться тут -->
+<div id="result"></div>
+
+<script>
+    // Завдання 2.1
+    function displayCurrentDate() {
+        const currentDate = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+        const formattedDate = currentDate.toLocaleDateString('uk-UA', options);
+        document.getElementById('result').innerText = `Дата: ${formattedDate}`;
+    }
+
+    // Завдання 2.2
+    function displayDayInfo() {
+        const currentDate = new Date();
+        const dayNumber = currentDate.getDay() === 0 ? 7 : currentDate.getDay();
+        const dayName = currentDate.toLocaleDateString('uk-UA', { weekday: 'long' });
+
+        document.getElementById('result').innerText = `Номер тижня: ${dayNumber}\nНазва дня тижня: ${dayName}`;
+    }
+
+    // Завдання 2.3
+    function findDate() {
+        const daysInput = parseInt(document.getElementById('daysInput').value, 10) || 0;
+        const currentDate = new Date();
+        const targetDate = new Date(currentDate);
+        targetDate.setDate(currentDate.getDate() + daysInput);
+
+        const result = daysInput < 0 ? 'Минула дата:' : 'Майбутня дата:';
+        document.getElementById('result').innerText = `${result} ${targetDate.toLocaleDateString('uk-UA')}`;
+    }
+
+    // Завдання 2.4
+    function findLastDayOfMonth() {
+        const monthInput = parseInt(document.getElementById('monthInput').value, 10) || 1;
+        const yearInput = parseInt(document.getElementById('yearInput').value, 10) || new Date().getFullYear();
+        const lastDay = new Date(yearInput, monthInput, 0).getDate();
+
+        document.getElementById('result').innerText = `Останній день місяця: ${lastDay}`;
+    }
+
+    // Завдання 2.5
+    function getSecondsInfo() {
+        const now = new Date();
+        const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        const endOfDay = new Date(startOfDay);
+        endOfDay.setDate(startOfDay.getDate() + 1);
+
+        const secondsPassed = Math.floor((now - startOfDay) / 1000);
+        const secondsRemaining = Math.floor((endOfDay - now) / 1000);
+
+        document.getElementById('result').innerText = `Пройшло секунд сьогодні: ${secondsPassed}\nЗалишилось секунд до кінця дня: ${secondsRemaining}`;
+    }
+
+    // Завдання 2.6
+    function formatDate() {
+        const dateString = document.getElementById('dateStringInput').value;
+        const userDate = new Date(dateString.replace(/(\d{2}).(\d{2}).(\d{4}) (\d{2}):(\d{2})/, '$3-$2-$1T$4:$5'));
+
+        const now = new Date();
+        const diffInSeconds = Math.floor((now - userDate) / 1000);
+
+        if (diffInSeconds < 60) {
+            document.getElementById('result').innerText = `${diffInSeconds} сек. назад`;
+        } else if (diffInSeconds < 3600) {
+            const diffInMinutes = Math.floor(diffInSeconds / 60);
+            document.getElementById('result').innerText = `${diffInMinutes} хв. назад`;
+        } else {
+            document.getElementById('result').innerText = `Повна дата: ${userDate.toLocaleString('uk-UA')}`;
+        }
+    }
+</script>
+
+</body>
+</html>
