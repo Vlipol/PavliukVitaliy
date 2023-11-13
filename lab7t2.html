@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання 2</title>
+</head>
+<body>
+
+<h2>Завдання 2.1</h2>
+<p>Рядок 1: <input type="text" id="str1"></p>
+<p>Рядок 2: <input type="text" id="str2"></p>
+<button onclick="compareStrings()">Порівняти рядки</button>
+<p>Результат: <span id="compareResult"></span></p>
+
+<h2>Завдання 2.2</h2>
+<p>Рядок: <input type="text" id="strChar"></p>
+<p>Символ: <input type="text" id="char"></p>
+<button onclick="findCharIndexesAndCount()">Знайти індекси та кількість</button>
+<p>Індекси: <span id="charIndexes"></span></p>
+<p>Кількість: <span id="charCount"></span></p>
+
+<h2>Завдання 2.3</h2>
+<p>Рядок: <input type="text" id="strCapitalize"></p>
+<button onclick="capitalizeFirstChar()">Перший символ у верхній регістр</button>
+<p>Результат: <span id="capitalizeResult"></span></p>
+
+<h2>Завдання 2.4</h2>
+<p>Рядок: <input type="text" id="strVowels"></p>
+<button onclick="countVowels()">Підрахувати голосні</button>
+<p>Кількість голосних: <span id="vowelsCount"></span></p>
+
+<h2>Завдання 2.5</h2>
+<p>Рядок: <input type="text" id="strSpam"></p>
+<button onclick="checkForSpam()">Перевірити на спам</button>
+<p>Результат: <span id="spamResult"></span></p>
+
+<h2>Завдання 2.6</h2>
+<p>Рядок: <input type="text" id="strTruncate"></p>
+<p>Максимальна довжина: <input type="number" id="maxLength"></p>
+<button onclick="truncate()">Скоротити рядок</button>
+<p>Результат: <span id="truncateResult"></span></p>
+
+<script>
+    function compareStringSizes(str1, str2) {
+        if (str1.length > str2.length) {
+            return 1;
+        } else if (str1.length < str2.length) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+    
+    function findCharIndexesAndCountInString(str, char) {
+        var indexes = [];
+        var count = 0;
+        for (var i = 0; i < str.length; i++) {
+            if (str[i] === char) {
+                indexes.push(i);
+                count++;
+            }
+        }
+        return { indexes: indexes, count: count };
+    }
+
+    function capitalizeFirstCharacter(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    function countVowelsInString(str) {
+        var vowels = 'aeiouAEIOU';
+        var count = 0;
+        for (var i = 0; i < str.length; i++) {
+            if (vowels.indexOf(str[i]) !== -1) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    function checkForSpamWords(str) {
+        var spamWords = ['100% безкоштовно', 'збільшення продажів', 'тільки сьогодні', 'не видаляйте'];
+        for (var i = 0; i < spamWords.length; i++) {
+            if (str.indexOf(spamWords[i]) !== -1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function truncateString(str, maxLength) {
+        if (str.length > maxLength) {
+            return str.slice(0, maxLength) + '...';
+        } else {
+            return str;
+        }
+    }
+
+    function compareStrings() {
+        var str1 = document.getElementById('str1').value;
+        var str2 = document.getElementById('str2').value;
+        var compareResult = document.getElementById('compareResult');
+        var result = compareStringSizes(str1, str2);
+        compareResult.textContent = result;
+    }
+
+    function findCharIndexesAndCount() {
+        var str = document.getElementById('strChar').value;
+        var char = document.getElementById('char').value;
+        var charIndexes = document.getElementById('charIndexes');
+        var charCount = document.getElementById('charCount');
+        var result = findCharIndexesAndCountInString(str, char);
+        charIndexes.textContent = result.indexes.join(', ');
+        charCount.textContent = result.count;
+    }
+
+    function capitalizeFirstChar() {
+        var str = document.getElementById('strCapitalize').value;
+        var capitalizeResult = document.getElementById('capitalizeResult');
+        var result = capitalizeFirstCharacter(str);
+        capitalizeResult.textContent = result;
+    }
+
+    function countVowels() {
+        var str = document.getElementById('strVowels').value;
+        var vowelsCount = document.getElementById('vowelsCount');
+        var result = countVowelsInString(str);
+        vowelsCount.textContent = result;
+    }
+
+    function checkForSpam() {
+        var str = document.getElementById('strSpam').value;
+        var spamResult = document.getElementById('spamResult');
+        var result = checkForSpamWords(str);
+        spamResult.textContent = result;
+    }
+
+    function truncate() {
+        var str = document.getElementById('strTruncate').value;
+        var maxLength = document.getElementById('maxLength').value;
+        var truncateResult = document.getElementById('truncateResult');
+        var result = truncateString(str, maxLength);
+        truncateResult.textContent = result;
+    }
+</script>
+
+</body>
+</html>

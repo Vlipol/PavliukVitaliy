@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 3</title>
+</head>
+<body>
+
+<h2>Завдання 3.1</h2>
+<p>Введіть ім'я змінної у стилі "Snake case": <input type="text" id="snakeCaseInput"></p>
+<button onclick="convertToCamelCase()">Перетворити</button>
+<p>Результат: <span id="camelCaseResult"></span></p>
+
+<h2>Завдання 3.2</h2>
+<p>Введіть ім'я змінної у стилі "Lower camel case": <input type="text" id="camelCaseInput"></p>
+<button onclick="convertToSnakeCase()">Перетворити</button>
+<p>Результат: <span id="snakeCaseResult"></span></p>
+
+<h2>Завдання 3.3</h2>
+<p>Введіть текст з датами у форматі yyyy/mm/dd: <textarea id="dateTextInput" rows="4" cols="50"></textarea></p>
+<button onclick="replaceDatesInText()">Замінити дати</button>
+<p>Результат: <span id="dateTextResult"></span></p>
+
+<script>
+    function toCamelCase(snakeCase) {
+        return snakeCase.replace(/_./g, match => match.charAt(1).toUpperCase());
+    }
+
+    function toSnakeCase(lowerCamelCase) {
+        return lowerCamelCase.replace(/[A-Z]/g, match => '_' + match.toLowerCase());
+    }
+
+    function replaceDates(text) {
+        return text.replace(/\b(\d{4})\/(\d{2})\/(\d{2})\b/g, '$3.$2.$1');
+    }
+
+    function convertToCamelCase() {
+        var snakeCaseInput = document.getElementById('snakeCaseInput').value;
+        var camelCaseResult = document.getElementById('camelCaseResult');
+        var result = toCamelCase(snakeCaseInput);
+        camelCaseResult.textContent = result;
+    }
+
+    function convertToSnakeCase() {
+        var camelCaseInput = document.getElementById('camelCaseInput').value;
+        var snakeCaseResult = document.getElementById('snakeCaseResult');
+        var result = toSnakeCase(camelCaseInput);
+        snakeCaseResult.textContent = result;
+    }
+
+    function replaceDatesInText() {
+        var dateTextInput = document.getElementById('dateTextInput').value;
+        var dateTextResult = document.getElementById('dateTextResult');
+        var result = replaceDates(dateTextInput);
+        dateTextResult.textContent = result;
+    }
+</script>
+
+</body>
+</html>
