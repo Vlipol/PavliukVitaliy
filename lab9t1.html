@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://js.cx/libs/animate.js"></script>
+    <link rel="stylesheet" href="lab9t1.css">
+    <script src="animate.js"></script>
+    <title>Lab9Task1</title>
+
+    <style>
+        .path {
+            position: relative;
+            height: 50px;
+        }
+
+        #brick {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="case1">
+    <textarea id="textExample" rows="5" cols="60">
+        In fields of green where dreams take flight,
+        Whispers of the stars paint the night.
+        A dance of shadows, a moonlit song,
+        In verses of silence, love lingers strong.
+        </textarea>       
+        <button id="but1" onclick="animateText(textExample)">Run the animated typing!</button>     
+        <script>
+            function animateText(textArea) {
+              let text = textArea.value;
+              let to = text.length,
+                from = 0;
+        
+              animate({
+                duration: 5000,
+                timing: bounce,
+                draw: function(progress) {
+                  let result = (to - from) * progress + from;
+                  textArea.value = text.slice(0, Math.ceil(result))
+                }
+              });
+            }
+            function bounce(timeFraction) {
+              for (let a = 0, b = 1; 1; a += b, b /= 2) {
+                if (timeFraction >= (7 - 4 * a) / 11) {
+                  return -Math.pow((11 - 6 * a - 11 * timeFraction) / 4, 2) + Math.pow(b, 2)
+                }
+              }
+            }
+        </script>
+    </div>
+
+    <div class="case2">
+        <img id="train" src="https://js.cx/clipart/train.gif">
+        <script>
+            train.onclick = function(){
+                let start = Date.now();
+
+                let timer = setInterval(function(){
+                    let timepassed = Date.now() - start;
+
+                    train.style.left = timepassed / 5 + 'px';
+                    if (timepassed > 2000) clearInterval(timer);
+                }, 20)
+            }
+        </script>
+    </div>
+
+    <div class="case3">
+        <textarea id="timeOutput" rows="5" cols="60"></textarea>
+
+        <script>
+            let prev = performance.now();
+            let times = 0;
+
+            function measure(time) {
+                document.getElementById("timeOutput").value += Math.floor(time - prev) + " ";
+                prev = time;
+
+                if (times++ < 10) {
+                    requestAnimationFrame(measure);
+                }
+            }
+
+            // Починаємо вимірювання при завантаженні сторінки
+            requestAnimationFrame(measure);
+        </script>
+    </div>
+
+    <div class="case4">
+        <progress id="elem"></progress>
+
+        <script>
+          elem.onclick = function() {
+            animate({
+              duration: 1000,
+              timing: function(timeFraction) {
+                return timeFraction;
+              },
+              draw: function(progress) {
+                elem.style.width = progress * 100 + '%';
+              }
+            });
+          };
+        </script>
+    </div>
+          
+    <div class="case5">
+        <div class="path">
+            <div id="brick" style="left: 500px;"></div>
+        </div>
+        <script>
+            let brick = document.getElementById("brick");
+
+            brick.onclick = function () {
+                animate({
+                    duration: 1000,
+                    timing: function back(x, timeFraction) {
+                        return Math.pow(timeFraction, 2) * ((x + 1) * timeFraction - x);
+                    }.bind(null, 1.5),
+                    draw: function (progress) {
+                        brick.style.left = progress * 500 + 'px';
+                    }
+                });
+            };
+
+            function animate(options) {
+                let start = performance.now();
+
+                requestAnimationFrame(function animate(time) {
+                    let timeFraction = (time - start) / options.duration;
+                    if (timeFraction > 1) timeFraction = 1;
+
+                    let progress = options.timing(timeFraction);
+
+                    options.draw(progress);
+
+                    if (timeFraction < 1) {
+                        requestAnimationFrame(animate);
+                    }
+                });
+            }
+        </script>
+    </div>
+
+    <div class="case6">
+        
+    </div>
+</body>
+</html>

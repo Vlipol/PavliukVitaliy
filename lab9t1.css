@@ -1,0 +1,31 @@
+html {
+    display: block;
+}
+
+.case1{
+    margin-top: 0px;
+}
+
+#train{
+    position: relative;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.case3{
+    margin-top: 20px;
+}
+
+.case4{
+    margin-top: 20px;
+}
+
+.case5{
+    margin-top: 20px;
+}
+#path {
+    outline: 1px solid #E8C48E;
+    width: 540px;
+    height: 20px;
+}
