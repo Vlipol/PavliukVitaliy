@@ -1,0 +1,42 @@
+<html> 
+<head>  
+  <script src="jquery-3.7.1.js"></script>
+  <script>
+    $(document).ready(function() { 
+      var $text = $('#hide_text');
+      $text.hide();
+      $('.button').click(function() {
+        $text.show(200);
+        console.log($text);
+      });
+
+      // Додано функції для виведення повідомлень в першому і останньому абзаці
+      $("p:first").text("DOM first!");
+      $("p:last").text("DOM last!");
+
+      // Додано обробник події для div-об'єкта, який додає та видаляє клас при наведенні миші
+      $('#hide_text').hover(
+        function() {
+          $(this).addClass('hovered');
+        },
+        function() {
+          $(this).removeClass('hovered');
+        }
+      );
+    });  
+  </script>
+  <style>
+    /* Стиль для div-об'єкта, який буде додаватися при наведенні миші */
+    .hovered {
+      background-color: lightblue;
+    }
+  </style>
+</head>  
+<body>  
+  <h1>Контент сторінки</h1> 
+  <a href="#" class="button">Натисніть, щоб показати текст</a> 
+  <div id="hide_text">Демонстраційний прихований текст</div>
+  <p></p> <!-- Перший абзац для виведення "DOM first!" -->
+  <p></p> <!-- Останній абзац для виведення "DOM last!" -->
+</body>  
+</html>

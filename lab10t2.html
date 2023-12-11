@@ -1,0 +1,81 @@
+<html>
+<head>
+  <script src="jquery-3.7.1.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Спеціальний стиль для div-об'єкта з подіями click та dblclick
+      $('#specialDiv').click(function() {
+        $(this).addClass('clickedStyle');
+      }).dblclick(function() {
+        $(this).removeClass('clickedStyle');
+      });
+
+      // Кнопки з повідомленнями при кліку та подвійному кліку
+      $('#singleClickBtn').click(function() {
+        alert('Одинарний клік');
+      });
+
+      $('#doubleClickBtn').dblclick(function() {
+        alert('Подвійний клік');
+      });
+
+      // Зображення з подіями mouseover та mouseout
+      $('#showImageBtn').click(function() {
+        $('#imageContainer').fadeIn();
+      });
+
+      $('#imageContainer img').click(function() {
+        $('#imageContainer').fadeOut();
+      }).mouseover(function() {
+        alert('Підпис до зображення');
+      });
+
+      // Перевірка коректності введених даних у формі
+      $("form").submit(function() {
+        if ($("input:first").val() == "correct") {
+          $("span").text("Перевіряєм...").show();
+          return true;
+        }
+        $("span").text("Неправильно!").show().fadeOut(1000);
+        return false;
+      });
+    });
+  </script>
+  <style>
+    /* Стиль для спеціального div-об'єкта при кліку */
+    .clickedStyle {
+      border: 2px solid red;
+      background-color: yellow;
+    }
+
+    /* Стиль для зображення */
+    #imageContainer {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+<body>
+  <div id="specialDiv">Спеціальний div-об'єкт</div>
+
+  <button id="singleClickBtn">Кнопка для одинарного кліку</button>
+  <button id="doubleClickBtn">Кнопка для подвійного кліку</button>
+
+  <p>Натисніть, щоб <span id="showImageBtn">показати зображення</span>.</p>
+  <div id="imageContainer">
+    <img src="path/to/image.jpg" alt="Зображення" />
+  </div>
+
+  <p>Введіть в текстове поле слово 'correct'.</p>
+  <form action="javascript:alert('Успішно!');">
+    <div>
+      <input type="text" />
+      <input type="submit" />
+    </div>
+  </form>
+  <span></span>
+</body>
+</html>
