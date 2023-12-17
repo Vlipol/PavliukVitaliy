@@ -1,0 +1,72 @@
+
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: blue;
+      position: relative;
+      display: none; /* Почнемо з того, щоб елемент був прихований */
+    }
+  </style>
+</head>
+<body>
+<h1>slideDown(), .slideToggle(), .slideUp()</h1>
+<div id="box"></div>
+
+<script>
+  $(document).ready(function() {
+    var box = $('#box');
+
+    function showAlert(message) {
+      alert(message);
+    }
+
+    // Використання slideDown(), slideToggle(), slideUp()
+    box.slideDown(1000, showAlert.bind(null, 'Елемент розкрився!'))
+       .delay(2000)
+       .slideToggle(1000, showAlert.bind(null, 'Елемент зник або розкрився!'))
+       .delay(2000)
+       .slideUp(1000, showAlert.bind(null, 'Елемент згорнувся!'));
+  });
+</script>
+<h2> .clearQueue()
+    .delay()
+    .dequeue()
+</h2>
+<div id="myElement" style="width: 100px; height: 100px; background-color: lightblue; margin: 20px;"></div>
+<button id="startBtn">Start Animation</button>
+<script>
+
+    $(document).ready(function () {
+
+
+      var myElement = $('#myElement');
+
+      function clearQueueDemo() {
+        myElement.animate({ width: '200px' }, 1000);
+        myElement.animate({ height: '200px' }, 1000);
+        myElement.clearQueue(); 
+      }
+
+      function delayDequeueDemo() {
+        myElement.animate({ width: '200px' }, 1000)
+          .delay(500) 
+          .animate({ height: '200px' }, 1000)
+          .queue(function (next) {
+            alert('Анімація завершена!');
+            next();
+          });
+      }
+
+      $('#startBtn').on('click', function () {
+        clearQueueDemo();
+        delayDequeueDemo();
+      });
+
+    });
+  </script>
+</body>
+</html>

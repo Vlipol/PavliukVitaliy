@@ -1,0 +1,46 @@
+
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    #animatedElement {
+      width: 100px;
+      height: 100px;
+      background-color: #3498db;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+<div id="animatedElement"></div>
+
+<script>
+  $(document).ready(function() {
+    var $element = $('#animatedElement');
+
+    var properties = {
+      left: '300px',
+      top: '200px',
+      opacity: 0.5
+    };
+    var duration = 2000;
+    var easing = 'swing'; 
+
+    var complete = function() {
+      alert('Анімація завершена!');
+    };
+
+    var options = {
+      queue: false,
+      specialEasing: {
+        left: 'linear',
+        top: 'linear',
+        opacity: 'linear'
+      }
+    };
+    $element.animate(properties, duration, easing, complete, options);
+  });
+</script>
+
+</body>
+</html>
