@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        div {
+            background: #de9a44;
+            margin: 3px;
+            width: 80px;
+            height: 40px;
+            display: none;
+            float: left;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $(".out").on("click", function () {
+                $("p:first").fadeOut("slow");
+            });
+            $(".in").on("click", function () {
+                $("p:first").fadeIn("slow");
+            });
+            $(".sl").on("click", function () {
+                if ($("div").first().is(":hidden")) {
+                    $("div").slideDown("slow");
+                } else {
+                    $("div").hide();
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <p>If you click on this paragraph you'll see it just fade away.</p>
+    <button class="out">.fadeOut()</button>
+    <button class="in">.fadeIn()</button>
+    <button class="sl">.slideDown()</button><br>
+    <div></div>
+    <div></div>
+    <div></div>
+
+</body>
+
+</html>

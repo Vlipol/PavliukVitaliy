@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #myElement {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    
+</head>
+
+<body>
+    <p>Натисніть на квадрат, щоб розпочалась анімація</p>
+    <div id="myElement"></div>
+    <script>
+        $(document).ready(function () {
+
+            var element = $('#myElement');
+
+            var properties = {
+                'opacity': 0.5,
+                'border-radius': '50%',
+                'width': '200px',
+                'height': '200px'
+            };
+
+            var durationFun = 3000;
+
+            var easingFun = 'swing';
+
+            var completeFun = function () {
+                alert('Анімація завершена!');
+            };
+
+            var options = {
+                'queue': false,
+                'specialEasing': {
+                    'width': 'linear',
+                    'opacity': 'swing'
+                },
+                'progress': function (animation, progress, remainingMs) {
+                    console.log("Прогрес анімації: " + progress);
+                }
+            };
+
+            element.on('click', function () {
+                element.animate(properties, {
+                    duration: durationFun,
+                    easing: easingFun,
+                    complete: completeFun,
+                    ...options
+                });
+            });
+        });
+
+    </script>
+</body>
+
+</html>

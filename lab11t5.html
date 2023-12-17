@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    <style>
+        .t1>p>span {
+            color: red;
+            font-size: 20px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        var arr = [1, 2, 3];
+        var str = "Hello, world!";
+        var num = 42;
+        var obj = { key: 'value' };
+        var bool = true;
+
+        $(document).ready(function () {
+            $(".t1 button").click(function () {
+                $('#result1').text($.isArray(arr));
+                $('#result2').text($.isArray(str));
+                $('#result3').text($.isArray(num));
+                $('#result4').text($.isArray(obj));
+                $('#result5').text($.isArray(bool));
+
+            });
+
+
+            let string = '   Це приклад   для виведення    строки без   зайвих    пробілів      ';
+            $("pre").html(string);
+            $(".t2 button").click(function () {
+                $(".t2 p").text($.trim(string));
+
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+    <div class="t1">
+        <p>Is arr an array? <span id="result1"></span></p>
+        <p>Is str an array? <span id="result2"></span></p>
+        <p>Is num an array? <span id="result3"></span></p>
+        <p>Is obj an array? <span id="result4"></span></p>
+        <p>Is bool an array? <span id="result5"></span></p>
+        <button>Виконати</button>
+    </div>
+
+    <div class="t2">
+        <pre></pre>
+        <p></p>
+        <button>Виконати</button>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<html>
+
+<head>
+    <style>
+        #foo {
+            margin: 10px;
+            padding: 5px;
+            border: 2px solid #666;
+            background: yellow;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $(".ins").click(function () {
+                $("p").insertBefore("#foo");
+            });
+
+            $(".det").click(function () {
+                $("#foo").detach();
+            });
+            
+            var p = $("#foo");
+            $(".inner").click(function () {
+                p.innerHeight(function (index, height) {
+                    return height + 50;
+                });
+            });
+            
+            $(".out").click(function () {
+                $("p:last").text("outerHeight:" + p.outerHeight());
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+    <button class="ins">insertBefore</button>
+    <button class="det">Detach</button>
+    <button class="inner">InnerHeight</button>
+    <button class="out">OuterHeight</button>
+    <div id="foo">FOO!</div>
+    <p>I would like to say: </p>
+    <p></p>
+
+</body>
+
+</html>

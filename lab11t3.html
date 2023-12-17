@@ -1,0 +1,93 @@
+<html>
+
+<head>
+    <style>
+        #t1 {
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .t1 {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            display: inline-block;
+        }
+
+        .t2,
+        .start1 {
+            width: 50px;
+            height: 50px;
+            background-color: yellow;
+            display: inline-block;
+        }
+
+        .example {
+            background-color: greenyellow;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $("span").click(function () {
+                $(".t1").each(function () {
+                    $(this).toggleClass("example");
+                });
+            });
+
+            $("div.start1").nextAll().css({ "background-color": "green" });
+            $("li.third-item").siblings().css("background-color", "red");
+            $(".t3").find("span").css("font-style", "italic");
+
+            $("button").click(function () {
+                $(".t4").offsetParent().css("background-color", "red");
+            });
+        });
+
+
+
+    </script>
+</head>
+
+<body>
+    Зміна кольорів кожного div з класом t1: <span id="t1">(натисніть сюди)</span>
+    <br><br>
+
+    <div class="t1"></div>
+    <div class="t1"></div>
+    <div class="t1"></div>
+
+    <br><br><br>
+    <div class="container">
+        <div class="t2"></div>
+        <div class="start1"></div>
+        <div class="t2"></div>
+        <div class="t2"></div>
+        <div class="t2"></div>
+    </div>
+
+    <ul>
+        <li>list item 1</li>
+        <li>list item 2</li>
+        <li class="third-item">list item 3</li>
+        <li>list item 4</li>
+        <li>list item 5</li>
+    </ul>
+
+    <p class="t3">В цьому <span> тексті</span> всюди де є span текст буде <span>italic</span></p>
+
+
+    <button>Set background-color</button>
+    <div style="border:1px solid black;width:70%;position:absolute;left:10px;top:400px">
+        <div style="border:1px solid black;margin:50px;background-color:yellow">
+            <p class="t4">Click button to set the background color of the first positioned parent element of this paragraph.</p>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

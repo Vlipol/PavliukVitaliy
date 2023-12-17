@@ -1,0 +1,72 @@
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $("button:first").click(function () {
+                $(this).html("Hello");
+            })
+
+
+            $(".sec").click(function () {
+                $(this).css({ 'backgroundColor': '#000', 'color': '#fff', 'padding': '5px' });
+            });
+
+
+
+            $("input").keyup(function () {
+                var value = $(this).val();
+                $(".third").text(value);
+            }).keyup();
+
+
+            $(".1").click(function () {
+                var linkHref = $("a").attr("href");
+                $(".fourth").text(linkHref);
+            });
+
+
+            $(".2").click(function () {
+                $("a").attr("href", "https://vlipol.github.io/PavliukVitaliy/");
+            });
+
+
+            $(".3").click(function () {
+                $("a").attr({
+                    "title": "ПНУ",
+                    "target": "_blank"
+                });
+            });
+
+
+            $(".4").click(function () {
+                $("a").attr("href", function (i, linkHref) {
+                    return linkHref + "fakultety";
+                });
+            });
+
+            $(".5").click(function () {
+                $("a").removeAttr("href");
+            });
+        })
+    </script>
+</head>
+
+<body>
+    <p>This <button>button</button> demonstrates how the .html() script functions</p>
+    <p class="sec">Click on this paragraph</p>
+    <input type="text" value="some text" />
+    <p class="third"></p>
+
+    <a href="https://pnu.edu.ua/">Link</a><br>
+    <p class="fourth"></p>
+    <button class="1">.attr (ім'я атрибута)</button>
+    <button class="2">.attr (ім'я атрибута, значення)</button>
+    <button class="3">.attr (атрибути)</button>
+    <button class="4">.attr (ім'я атрибута, функція)</button>
+    <button class="5">.removeAttr()</button>
+</body>
+
+</html>
